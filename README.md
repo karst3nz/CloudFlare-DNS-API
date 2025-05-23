@@ -3,7 +3,7 @@
 **CloudflareAsyncAPI** is an asynchronous Python client for interacting with Cloudflare's REST API v4 using either a Bearer token or a Global API Key.
 
 This client supports creating zones, registering domains, adding DNS records, and checking zone status.
-
+https://dash.cloudflare.com/
 ---
 
 ## 🚀 Features
@@ -17,13 +17,6 @@ This client supports creating zones, registering domains, adding DNS records, an
 
 ---
 
-## 📦 Installation
-
-```bash
-pip install aiohttp
-```
-
----
 
 ## 🔐 Authentication
 
@@ -45,7 +38,7 @@ cf = CloudflareAsyncAPI.from_global_key("your-email@example.com", "your-global-a
 
 ## 🧰 Usage
 
-Here is a complete example of how to use the client:
+Here is a complete example of how to use the client or check example.py:
 
 ```python
 import asyncio
