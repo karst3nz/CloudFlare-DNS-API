@@ -1,0 +1,37 @@
+from cloudflare import CloudflareAsyncAPI
+import asyncio
+
+async def example():
+    cf = CloudflareAsyncAPI.from_api_token( # Requires a Full DNS and USER permissions. Better use ".from_global_key()" is more simple
+        token="YOUR-CF-TOKEN"
+    )
+    #------------- OR -------------#
+    cf = CloudflareAsyncAPI.from_global_key(
+        email="YOUR-CF-EMAIL",
+        api_key="YOUR-CF-GLOBAL-KEY"
+    )
+    async with cf:
+        # Register the domain (creates a new zone)
+        zone_id, ns1, ns2 = await cf.register_domain("example.com")
+        r = f"""
+Zone ID: {zone_id}
+
+NS1: {ns1}
+NS2: {ns2}
+"""
+        print(r)
+        # Add an A record
+        await cf.add_dns_record(
+            zone_id=zone_id,
+            record_type="A",
+            name="www",
+            content="192.0.2.1",
+            proxied=True  # Enable Cloudflare proxy
+        )
+
+        # Optionally wait until the zone is active
+        await cf.wait_until_active(zone_id)        
+
+
+if __name__ == "__main__":
+    asyncio.run(example())
