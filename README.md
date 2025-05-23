@@ -42,7 +42,7 @@ Here is a complete example of how to use the client or check example.py:
 
 ```python
 import asyncio
-from cloudflare_async_api import CloudflareAsyncAPI  # Adjust the import path as needed
+from cloudflare import CloudflareAsyncAPI  # Adjust the import path as needed
 
 async def main():
     cf = CloudflareAsyncAPI.from_global_key("your-email@example.com", "your-global-api-key")
